@@ -13,11 +13,11 @@ export const Button = ({
   return (
     <button
       disabled={disabled}
-      className={`rounded-lg flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium text-white bg-gradient-to-r pink focus:outline-none shadow-md 
+      className={`transition ease-in-out delay-150 bg-white text-purple-500  hover:scale-110 hover:bg-purple-500 duration-300 rounded-3xl px-7 py-3 uppercase transform transition-all hover:text-white scale-110 ml-8 
 			${className} ${
         disabled
           ? "opacity-60 cursor-not-allowed"
-          : "transform hover:-translate-y-px focus:shadow-sm focus:-translate-y-0"
+          : "transform focus:shadow-sm focus:-translate-y-0"
       }
 			`}
       {...props}

@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostById } from "src/context/functions/getPostById";
 import idl from "src/idl.json";
+import { useBlog } from "src/context/Blog";
+
+
+
 
 const PROGRAM_KEY = new PublicKey(idl.metadata.address);
 
@@ -21,6 +25,7 @@ export const FullPost = () => {
   const { connection } = useConnection();
   const [provider, setProvider] = useState();
   const [post, setPost] = useState();
+  const {user} = useBlog();
 
   useEffect(() => {
     try {
@@ -44,23 +49,40 @@ export const FullPost = () => {
 
 
   return (
-    <article className="hentry background-color">
-      <div className="featured-image">
+    
+    <article className="hentry bgg">
+      <header className="fixed py-4 mb-6 flex z-10 w-full">
+        <div className="flex justify-between mt-4 items-center h-full container">
+          <h2 className="text-2xl font-bold">
+            <div className="bg-clip-text bg-gradient-to-br text-white"
+            >
+              TWEEPER
+            </div>
+            
+          </h2>
+            <ul>
+              <a href="/"><li className="cursor-pointer transition ease-in-out delay-150 text-blue-500 hover:scale-110 bg-white hover:bg-blue-500 duration-300 rounded-3xl px-7 py-3 uppercase transform transition-all hover:text-white scale-110">
+                HOME
+              </li></a>
+            </ul>
+          </div>
+      </header>
+      <h1 className="entry-title text-white mt-28 mx-auto">{post?.title}</h1>
+      <div className="featured-image w-full mx-0">
         <img
-          src="https://images.unsplash.com/photo-1531096187418-86ac6b31baea?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9d6cd4e7c48dfc78f5e9c0fb07b692f0&auto=format&fit=crop&w=1350&q=80"
+          src="https://coinpare.io/img/banner/solana.jpg"
           alt=""
         />
       </div>
-      <h1 className="entry-title">{post?.title}</h1>
       <div className="entry-meta">
         <p>
-          <span className="author">
-            Written by <a href="#">Lavi Perchik</a>
+          <span className="author text-purple-900">
+            Written by <a href="#">{user?.name}</a>
           </span>{" "}
-          <span className="date">Monday, July 9, 2018</span>
+          <span className="date text-purple-900">November 19 2022</span>
         </p>
       </div>
-      <div className="entry-content">
+      <div className="entry-content text-gray-200 mr-96">
         <p>{post?.content}</p>
       </div>
     </article>

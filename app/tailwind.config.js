@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         "light-gray": "#F0F2F5",
+        "bookmark-purple": "#0A071B"
       },
     },
     container: {
